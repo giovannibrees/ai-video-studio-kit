@@ -122,7 +122,7 @@ Open http://localhost:8765, approve the script and the blocking, then in a secon
 python3 studio.py frames demo --demo
 ```
 
-The example is a 41-second brand film for a made-up café, *Northbean Coffee: The First Pour*. Here is its storyboard
+The example is a 41-second brand film for Cafe Lucetti, *The First Pour*. Here is its storyboard
 in demo mode (each card shows the shot and its blocking plan):
 
 ![Demo storyboard](docs/img/storyboard_sheet.jpg)
@@ -270,7 +270,7 @@ python3 studio.py music my-ad
 ```
 
 The narration is recorded one file per shot, so each line lands on its own picture and a bad line is redone alone.
-Brand names that a voice reads wrongly go in `"pronounce": {"Northbean": "North bean"}`. The score comes in two takes;
+Brand names that a voice reads wrongly go in `"pronounce": {"Lucetti": "Loo chetti"}`. The score comes in two takes;
 pick one.
 
 ![Voice and score on the review page](docs/img/review_voice.jpg)
@@ -351,14 +351,14 @@ how many unique clips that needs, the expected retakes, and the total against yo
 
 ```json
 {
-  "title": "Northbean Coffee: The First Pour",
+  "title": "Cafe Lucetti: The First Pour",
   "format": "brand_film",
   "brief": "For people who start early. Feeling: ... Fact: ... 45 s, 2.39:1, calm narrator.",
   "promise": {"text": "One person, one café, one morning. Every shot moves. No text in shot.", "signed": "Client name, date"},
   "looks": {"Lena": "a woman in her early thirties, fair skin with light freckles, dark blond hair in a low bun, rust linen apron"},
   "style": "Cinematic film still, 35 mm anamorphic lens, soft motivated light, gentle film grain, photoreal, 16:9.",
   "aspect": "2.39:1",
-  "pronounce": {"Northbean": "North bean"},
+  "pronounce": {"Lucetti": "Loo chetti"},
   "music": {"style": "warm solo piano and soft strings, slow, hopeful, 72 bpm", "title": "First Pour"},
   "concepts": [{"title": "...", "logline": "...", "hook": "...", "image": "...", "fit": "..."}],
   "chosen": "The First Pour",
@@ -373,8 +373,8 @@ how many unique clips that needs, the expected retakes, and the total against yo
                   "people": [{"name": "Lena", "at": [2.6, 2.4], "facing": [2.6, 4.4]}]}},
     {"id": "s08", "seconds": 6, "role": "brand", "subject": "the end card", "subject_motion": "holds",
      "scene": "black", "framing": "full frame", "camera": "locked-off", "intent": "brand",
-     "vo": "Northbean Coffee. Open at half past five.",
-     "card": {"title": "Northbean Coffee", "line": "Open at half past five."}}
+     "vo": "Cafe Lucetti. The first pour is yours.",
+     "card": {"title": "Cafe Lucetti", "line": "The first pour is yours."}}
   ]
 }
 ```

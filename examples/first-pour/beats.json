@@ -1,7 +1,7 @@
 {
- "title": "Northbean Coffee: The First Pour",
+ "title": "Cafe Lucetti: The First Pour",
  "format": "brand_film",
- "brief": "For people who start early. Feeling: the quiet before the city wakes belongs to you. Fact: Northbean opens at 5:30. 45 s, 2.39:1, calm narrator.",
+ "brief": "For people who start early. Feeling: the quiet before the city wakes belongs to you. Fact: Cafe Lucetti is open before the city wakes. 45 s, 2.39:1, calm narrator.",
  "promise": {
   "text": "One person, one café, one morning. Every shot moves. No text in shot, the brand only on the end card. Warm amber light against blue dawn.",
   "signed": "Demo Client, 2026-11-15"
@@ -11,7 +11,7 @@
   "Tom"
  ],
  "pronounce": {
-  "Northbean": "North bean"
+  "Lucetti": "Loo chetti"
  },
  "concepts": [
   {
@@ -392,11 +392,11 @@
    "framing": "centered",
    "camera": "locked-off",
    "intent": "who made the morning",
-   "onscreen_text": "Northbean Coffee. Open at 5:30.",
-   "vo": "Northbean Coffee. Open at half past five.",
+   "onscreen_text": "Cafe Lucetti. The first pour is yours.",
+   "vo": "Cafe Lucetti. The first pour is yours.",
    "card": {
-    "title": "Northbean Coffee",
-    "line": "Open at half past five."
+    "title": "Cafe Lucetti",
+    "line": "The first pour is yours."
    }
   }
  ],
