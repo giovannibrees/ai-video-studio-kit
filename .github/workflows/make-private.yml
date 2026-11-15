@@ -1,0 +1,34 @@
+# Copyright (c) 2026 Giovanni Brees. All rights reserved.
+# Makes this repository private on Sunday 13 December 2026 at 10:00 Lisbon (10:00 UTC, Lisbon is on UTC in winter).
+# Needs a repository secret VISIBILITY_TOKEN: a fine-grained personal access token for this repository only,
+# permission "Administration: Read and write". The built-in GITHUB_TOKEN cannot change visibility.
+name: Make repository private
+on:
+  schedule:
+    - cron: "0 10 13 12 *"
+  workflow_dispatch:
+permissions: {}
+jobs:
+  make-private:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Only on 13 December 2026 (or when started by hand)
+        id: when
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$(date -u +%F)" = "2026-12-13" ]; then
+            echo "go=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "Not the scheduled date; nothing to do."
+          fi
+      - name: Set visibility to private
+        if: steps.when.outputs.go == 'yes'
+        env:
+          TOKEN: ${{ secrets.VISIBILITY_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "::error::Secret VISIBILITY_TOKEN is missing"; exit 1; fi
+          code=$(curl -s -o out.json -w "%{http_code}" -X PATCH \
+            -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ github.repository }}" -d '{"private": true}')
+          echo "HTTP $code"; grep -o '"private": *[a-z]*' out.json || cat out.json
+          [ "$code" = "200" ] && grep -q '"private": *true' out.json
