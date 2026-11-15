@@ -270,7 +270,7 @@ python3 studio.py music my-ad
 ```
 
 The narration is recorded one file per shot, so each line lands on its own picture and a bad line is redone alone.
-Brand names that a voice reads wrongly go in `"pronounce": {"Lucetti": "Loo chetti"}`. The score comes in two takes;
+Brand names that a voice reads wrongly go in `"pronounce": {"AcmeHQ": "Acme H Q"}`. The score comes in two takes;
 pick one.
 
 ![Voice and score on the review page](docs/img/review_voice.jpg)
@@ -358,7 +358,7 @@ how many unique clips that needs, the expected retakes, and the total against yo
   "looks": {"Lena": "a woman in her early thirties, fair skin with light freckles, dark blond hair in a low bun, rust linen apron"},
   "style": "Cinematic film still, 35 mm anamorphic lens, soft motivated light, gentle film grain, photoreal, 16:9.",
   "aspect": "2.39:1",
-  "pronounce": {"Lucetti": "Loo chetti"},
+  "pronounce": {"AcmeHQ": "Acme H Q"},
   "music": {"style": "warm solo piano and soft strings, slow, hopeful, 72 bpm", "title": "First Pour"},
   "concepts": [{"title": "...", "logline": "...", "hook": "...", "image": "...", "fit": "..."}],
   "chosen": "The First Pour",
