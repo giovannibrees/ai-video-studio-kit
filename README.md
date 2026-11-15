@@ -3,7 +3,7 @@
 Make short AI films (brand films, UGC ads, music videos) from a script to a finished cut, with a person approving every
 step before any money is spent on the next one.
 
-![Blocking plans on the review page](docs/img/review_blocking.jpg)
+![Real start frames on the review page](docs/img/review_frames.jpg)
 
 You write the script, the kit checks it, draws a top-view plan of who stands and walks where, makes the start frames,
 renders several video takes per shot, checks every take for typical AI defects, records the narration and the score, and
@@ -240,6 +240,13 @@ approve it:
 Approve each frame, or write what should change. The note is added to the next prompt for that frame, the old version
 is kept in `frames/old/`, and the page shows the version number:
 
+![Real frames on the review page](docs/img/review_frames.jpg)
+
+What sending a frame back looks like in practice. Both first versions had writing in them (a number plate, shop signs,
+neon), which video models turn into garbled letters. The note asked for a remake without people or signs:
+
+![Frames sent back and their approved remakes](docs/img/frame_before_after.jpg)
+
 The first approved frame of each character is passed as a reference to every later frame with that character, so faces
 and clothes stay the same across shots.
 
@@ -255,9 +262,33 @@ measures motion frame by frame and flags pop-ins, morphing, opposite motion stre
 ![Takes command](docs/img/term_takes.png)
 
 Each flagged take gets a frame strip with the bad moments marked in red, so you know exactly where to look.
+Two real catches:
 
-On the review page you watch every take at full speed, click the best one and approve it. Pending shots sit at the
-top; approved shots collapse to the chosen take. The checklist for reviewers is
+**A smoke cloud that balloons out of nothing** (flagged as a pop-in at 1.0 s; the clean part starts at 1.25 s):
+
+![Clip check: smoke pop-in](docs/img/qa_smoke_popin.jpg)
+
+**The road changing under the camera**: an overpass appears and the street swaps at 2.8 s, a take that is unusable
+(FAIL, no clean range). This shot was re-rolled until all traffic moved one way:
+
+![Clip check: road changes mid-take](docs/img/qa_road_change.jpg)
+
+On the review page you watch every take at full speed, click the best one and approve it. Here the smoke shot has three
+takes: two with the smoke pop-in (REVIEW) and one clean take (PASS), which the reviewer picks:
+
+![Real takes on the review page](docs/img/review_clips.jpg)
+
+From an approved frame to the approved clip:
+
+| Start frame | Approved clip |
+|---|---|
+| ![Neon puddle frame](docs/examples/frame_C88.jpg) | [![Neon puddle clip](docs/examples/clip_C88.gif)](docs/examples/clip_C88.mp4) |
+| ![Tassels frame](docs/examples/frame_C75.jpg) | [![Tassels clip](docs/examples/clip_C75.gif)](docs/examples/clip_C75.mp4) |
+
+The check flags; a person decides. It flagged the swinging tassels as a direction reversal and the rain rings as
+crossing motion. The reviewer watched both at full speed, saw natural motion, and passed them.
+
+Pending shots sit at the top; approved shots collapse to the chosen take. The checklist for reviewers is
 [docs/REVIEW_CHECKLIST.md](docs/REVIEW_CHECKLIST.md): the clip check catches about two thirds of the defects people
 reject, so a human look is still part of the job.
 
