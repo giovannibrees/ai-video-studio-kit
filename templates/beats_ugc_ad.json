@@ -1,0 +1,95 @@
+{
+ "title": "Product: UGC ad",
+ "format": "ugc_ad",
+ "brief": "For busy commuters. Feeling: finally a bottle that does not leak. Fact: 24 hours cold. 20 s, 9:16 crop later, one creator talking to camera.",
+ "promise": {
+  "text": "One creator, one kitchen, the product always in hand at its real size. No text in shot, captions added in the edit.",
+  "signed": ""
+ },
+ "characters": [
+  "Jess"
+ ],
+ "looks": {
+  "Jess": "a woman in her mid twenties, fair skin, freckles, auburn hair in a messy bun, oversized grey hoodie, small clip-on microphone"
+ },
+ "pronounce": {},
+ "style": "Raw iPhone footage look, natural window light, real skin texture, handheld, photoreal, 16:9.",
+ "music": {
+  "style": "light upbeat lo-fi, soft, 100 bpm",
+  "title": "Bed"
+ },
+ "concepts": [
+  {
+   "title": "The leak test",
+   "logline": "Jess shakes the bottle upside down over her laptop to prove it does not leak.",
+   "hook": "A bottle held upside down over a laptop.",
+   "image": "A dry keyboard.",
+   "fit": "One person, one object, small actions."
+  },
+  {
+   "title": "Morning routine",
+   "logline": "Jess fills it at 7 am and it is still ice cold at midnight.",
+   "hook": "Ice cubes rattling.",
+   "image": "Frost on the bottle.",
+   "fit": "Close-ups of hands and ice."
+  },
+  {
+   "title": "Gym bag",
+   "logline": "Jess pulls three old bottles out of her bag, then the new one.",
+   "hook": "A messy gym bag.",
+   "image": "The one clean bottle.",
+   "fit": "Simple product hero shots."
+  }
+ ],
+ "chosen": "The leak test",
+ "rows": [
+  {
+   "id": "s01",
+   "seconds": 3,
+   "role": "hook",
+   "subject": "Jess",
+   "subject_motion": "holds the bottle upside down over her open laptop",
+   "scene": "a bright kitchen counter, morning window light",
+   "framing": "medium close-up, eye level",
+   "camera": "slight push-in",
+   "intent": "the viewer winces",
+   "vo": "My last bottle killed my laptop."
+  },
+  {
+   "id": "s02",
+   "seconds": 5,
+   "role": "product",
+   "subject": "Jess",
+   "subject_motion": "shakes the bottle hard, nothing drips",
+   "scene": "the same kitchen",
+   "framing": "medium close-up",
+   "camera": "locked-off",
+   "intent": "it really does not leak",
+   "vo": "So I tested this one the hard way, upside down. Not a single drop."
+  },
+  {
+   "id": "s03",
+   "seconds": 5,
+   "role": "proof",
+   "subject": "the bottle",
+   "subject_motion": "sweats cold drops on the counter as Jess sets it down",
+   "scene": "the same kitchen, evening light",
+   "framing": "close-up, low angle",
+   "camera": "slow push-in",
+   "intent": "it stays cold all day",
+   "vo": "Ice in at seven in the morning. Still ice cold at midnight."
+  },
+  {
+   "id": "s04",
+   "seconds": 5,
+   "role": "cta",
+   "subject": "Jess",
+   "subject_motion": "smiles and points the bottle at the camera",
+   "scene": "the same kitchen",
+   "framing": "medium shot",
+   "camera": "slight pull-out",
+   "intent": "go get one",
+   "vo": "Link is right there. Use code COLD for ten percent off."
+  }
+ ]
+}

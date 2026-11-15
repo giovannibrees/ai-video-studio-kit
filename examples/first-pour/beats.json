@@ -1,0 +1,413 @@
+{
+ "title": "Northbean Coffee: The First Pour",
+ "format": "brand_film",
+ "brief": "For people who start early. Feeling: the quiet before the city wakes belongs to you. Fact: Northbean opens at 5:30. 45 s, 2.39:1, calm narrator.",
+ "promise": {
+  "text": "One person, one café, one morning. Every shot moves. No text in shot, the brand only on the end card. Warm amber light against blue dawn.",
+  "signed": "Demo Client, 2026-11-15"
+ },
+ "characters": [
+  "Lena",
+  "Tom"
+ ],
+ "pronounce": {
+  "Northbean": "North bean"
+ },
+ "concepts": [
+  {
+   "title": "The First Pour",
+   "logline": "Lena opens her café in the dark, and the first cup of the day turns the street from blue to gold.",
+   "hook": "One lit window on a dark street.",
+   "image": "Steam rising through the first ray of sun.",
+   "fit": "Light, steam and one person: what video models draw best."
+  },
+  {
+   "title": "Closing Time Regulars",
+   "logline": "Three regulars who never meet share the same table at different hours.",
+   "hook": "A cup ring on a wooden table.",
+   "image": "Three cups appearing in a time-lapse.",
+   "fit": "Static table, light changes only."
+  },
+  {
+   "title": "The Grinder",
+   "logline": "The sound of the grinder wakes the whole street, window by window.",
+   "hook": "A dark street, one sound.",
+   "image": "Windows lighting up in rhythm.",
+   "fit": "Wides with light changes, no people walking."
+  }
+ ],
+ "chosen": "The First Pour",
+ "sets": {
+  "cafe": {
+   "size": [
+    9,
+    6
+   ],
+   "items": [
+    {
+     "name": "window",
+     "x": 0,
+     "y": 0,
+     "w": 9,
+     "d": 0.15,
+     "kind": "window"
+    },
+    {
+     "name": "counter",
+     "x": 1,
+     "y": 1.2,
+     "w": 3.6,
+     "d": 0.8
+    },
+    {
+     "name": "espresso machine",
+     "x": 3.3,
+     "y": 1.25,
+     "w": 1.0,
+     "d": 0.6
+    },
+    {
+     "name": "table 1",
+     "x": 5.5,
+     "y": 1.4,
+     "w": 1.0,
+     "d": 1.0
+    },
+    {
+     "name": "table 2",
+     "x": 7.2,
+     "y": 3.2,
+     "w": 1.0,
+     "d": 1.0
+    },
+    {
+     "name": "door",
+     "x": 8.85,
+     "y": 4.6,
+     "w": 0.15,
+     "d": 1.0,
+     "kind": "door"
+    }
+   ]
+  }
+ },
+ "rows": [
+  {
+   "id": "s01",
+   "seconds": 5,
+   "role": "hook",
+   "subject": "one lit café window",
+   "subject_motion": "the warm light flickers on behind the glass",
+   "scene": "a dark street at 5:30 am, wet cobbles, blue dawn",
+   "framing": "wide from across the street",
+   "camera": "slow push-in",
+   "intent": "someone is up before everyone else",
+   "vo": "At half past five, the street still belongs to the night."
+  },
+  {
+   "id": "s02",
+   "seconds": 5,
+   "role": "setup",
+   "subject": "Lena",
+   "subject_motion": "ties her apron and breathes in",
+   "scene": "the café behind the counter, one pendant lamp on",
+   "framing": "medium close-up, three quarter",
+   "camera": "slow push-in",
+   "intent": "this is her ritual",
+   "blocking": {
+    "set": "cafe",
+    "camera": {
+     "x": 3.0,
+     "y": 4.4,
+     "aim": [
+      2.6,
+      1.9
+     ],
+     "lens": 50,
+     "move": "push-in"
+    },
+    "people": [
+     {
+      "name": "Lena",
+      "at": [
+       2.6,
+       2.4
+      ],
+      "facing": [
+       2.8,
+       4.4
+      ]
+     }
+    ]
+   },
+   "vo": "Lena likes it that way. One lamp, one apron, one deep breath."
+  },
+  {
+   "id": "s03",
+   "seconds": 4,
+   "role": "setup",
+   "subject": "the espresso machine",
+   "subject_motion": "the first shot of coffee pours into a cup",
+   "scene": "the counter, steam in the lamplight",
+   "framing": "close-up",
+   "camera": "slow push-in",
+   "intent": "the first cup of the day",
+   "blocking": {
+    "set": "cafe",
+    "camera": {
+     "x": 2.2,
+     "y": 3.0,
+     "aim": [
+      1.9,
+      1.5
+     ],
+     "lens": 85,
+     "move": "push-in"
+    },
+    "people": [
+     {
+      "name": "Lena",
+      "at": [
+       2.0,
+       2.3
+      ],
+      "facing": [
+       1.9,
+       1.5
+      ]
+     }
+    ]
+   },
+   "vo": "The first pour is always hers."
+  },
+  {
+   "id": "s04",
+   "seconds": 5,
+   "role": "turn",
+   "subject": "Lena",
+   "subject_motion": "carries the cup to the window table",
+   "scene": "the empty café, blue light through the window",
+   "framing": "medium wide",
+   "camera": "slow track along the counter",
+   "blocking": {
+    "set": "cafe",
+    "camera": {
+     "x": 4.2,
+     "y": 5.5,
+     "aim": [
+      4.5,
+      2.5
+     ],
+     "lens": 28,
+     "move": "track"
+    },
+    "people": [
+     {
+      "name": "Lena",
+      "from": [
+       3.0,
+       2.4
+      ],
+      "to": [
+       5.9,
+       2.7
+      ],
+      "via": [
+       [
+        4.9,
+        2.7
+       ]
+      ],
+      "facing": [
+       6.0,
+       1.9
+      ]
+     }
+    ]
+   },
+   "intent": "she gives herself one minute",
+   "vo": "She carries it to the window and sits for one minute."
+  },
+  {
+   "id": "s05",
+   "seconds": 6,
+   "role": "turn",
+   "subject": "the steam from the cup",
+   "subject_motion": "rises and catches the first ray of sun",
+   "scene": "the window table, the street turning gold",
+   "framing": "close-up, low",
+   "camera": "slow push-in",
+   "intent": "the day arrives through her cup",
+   "magic": true,
+   "read_in_1s": true,
+   "blocking": {
+    "set": "cafe",
+    "camera": {
+     "x": 6.3,
+     "y": 3.0,
+     "aim": [
+      6.0,
+      1.6
+     ],
+     "lens": 85,
+     "move": "push-in"
+    },
+    "people": [
+     {
+      "name": "Lena",
+      "at": [
+       6.0,
+       2.6
+      ],
+      "facing": [
+       6.0,
+       0.5
+      ],
+      "offscreen": true
+     }
+    ]
+   },
+   "vo": "Then the sun finds the steam, and the street turns gold."
+  },
+  {
+   "id": "s06",
+   "seconds": 5,
+   "role": "build",
+   "subject": "Tom",
+   "subject_motion": "pushes the door open and walks to the counter",
+   "scene": "the café in gold morning light",
+   "framing": "wide",
+   "camera": "slow pan left, following Tom",
+   "blocking": {
+    "set": "cafe",
+    "camera": {
+     "x": 2.0,
+     "y": 5.6,
+     "aim": [
+      8.0,
+      4.6
+     ],
+     "pan_to": [
+      3.8,
+      2.2
+     ],
+     "lens": 28,
+     "move": "pan"
+    },
+    "people": [
+     {
+      "name": "Tom",
+      "from": [
+       8.6,
+       5.1
+      ],
+      "to": [
+       4.9,
+       2.5
+      ],
+      "via": [
+       [
+        6.0,
+        4.6
+       ]
+      ],
+      "facing": [
+       2.8,
+       1.6
+      ]
+     },
+     {
+      "name": "Lena",
+      "at": [
+       2.8,
+       2.4
+      ],
+      "facing": [
+       5.0,
+       3.0
+      ]
+     }
+    ]
+   },
+   "intent": "the first regular arrives",
+   "vo": "At six, Tom arrives. He never has to order."
+  },
+  {
+   "id": "s07",
+   "seconds": 5,
+   "role": "payoff",
+   "subject": "Lena",
+   "subject_motion": "slides a cup across the counter and smiles",
+   "scene": "the counter in morning sun",
+   "framing": "medium close-up",
+   "camera": "slow push-in",
+   "intent": "small rituals, shared",
+   "blocking": {
+    "set": "cafe",
+    "camera": {
+     "x": 5.2,
+     "y": 3.6,
+     "aim": [
+      2.8,
+      2.2
+     ],
+     "lens": 50,
+     "move": "push-in"
+    },
+    "people": [
+     {
+      "name": "Lena",
+      "at": [
+       2.8,
+       2.4
+      ],
+      "facing": [
+       4.6,
+       2.6
+      ]
+     },
+     {
+      "name": "Tom",
+      "at": [
+       4.9,
+       2.6
+      ],
+      "facing": [
+       2.8,
+       2.4
+      ],
+      "offscreen": true
+     }
+    ]
+   },
+   "vo": "Some mornings start with a sunrise. Ours start with a cup."
+  },
+  {
+   "id": "s08",
+   "seconds": 6,
+   "role": "brand",
+   "subject": "the end card",
+   "subject_motion": "the logo fades up",
+   "scene": "warm black card",
+   "framing": "centered",
+   "camera": "locked-off",
+   "intent": "who made the morning",
+   "onscreen_text": "Northbean Coffee. Open at 5:30.",
+   "vo": "Northbean Coffee. Open at half past five.",
+   "card": {
+    "title": "Northbean Coffee",
+    "line": "Open at half past five."
+   }
+  }
+ ],
+ "looks": {
+  "Lena": "a woman in her early thirties, fair skin with light freckles, dark blond hair in a low bun, rust-colored linen apron over a cream sweater",
+  "Tom": "a man in his sixties, light tan skin, short grey beard, navy wool coat and a flat cap"
+ },
+ "style": "Cinematic film still, 35 mm anamorphic lens, soft motivated light, gentle film grain, shallow depth of field, photoreal, 16:9.",
+ "aspect": "2.39:1",
+ "music": {
+  "style": "warm solo piano and soft strings, slow, hopeful, gentle build, 72 bpm",
+  "title": "First Pour"
+ }
+}

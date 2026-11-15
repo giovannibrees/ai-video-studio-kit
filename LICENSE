@@ -1,0 +1,28 @@
+AI Video Studio Kit
+Copyright (c) 2026 Giovanni Brees. All rights reserved.
+
+This software, its documentation, templates, examples and images (the "Kit") are proprietary.
+
+1. Permission to use. The copyright holder grants you a personal, non-exclusive, non-transferable, revocable
+   permission to install and run the Kit, for as long as the copyright holder has given you access to this
+   repository, in order to produce your own videos. Videos you make with the Kit belong to you.
+
+2. Not permitted without prior written permission from the copyright holder:
+   a. copying the Kit, in whole or in part, except for the local copy needed to run it;
+   b. publishing, sharing, redistributing, uploading or making the Kit available to anyone else, including by
+      forking it into a public repository or sharing access credentials;
+   c. selling, renting, sublicensing or offering the Kit, or a service built mainly on it, to third parties;
+   d. modifying the Kit to create a derivative product, or reusing its code, prompts, checks or documentation in
+      another product;
+   e. removing this notice.
+
+3. Access ends when the copyright holder revokes it. On revocation you must delete your copies of the Kit.
+   Videos you already made remain yours.
+
+4. Third-party services. The Kit calls services you pay for yourself (kie.ai, ElevenLabs). Their terms apply to
+   your use of them and to the media they generate.
+
+5. No warranty. The Kit is provided "as is", without warranty of any kind. The copyright holder is not liable for
+   any damages or costs arising from its use, including credits spent on third-party services.
+
+For permission requests, contact the copyright holder through GitHub.

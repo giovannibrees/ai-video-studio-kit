@@ -1,0 +1,23 @@
+{
+ "title": "Music video plan",
+ "audiomap": "audiomap.json",
+ "promise": {
+  "no_repeat": true,
+  "max_uses_per_clip": 1,
+  "max_stretch": 1.3
+ },
+ "approved_clips": 0,
+ "usable_s_per_clip": 3.0,
+ "takes_per_shot": 1,
+ "video": {
+  "model": "seedance-2-5",
+  "credits_per_take": 140,
+  "reject_rate": 0.3
+ },
+ "frames": {
+  "credits_each": 18,
+  "remake_rate": 0.35
+ },
+ "reserve": 0.1,
+ "budget_usd": 60
+}

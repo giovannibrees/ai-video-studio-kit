@@ -1,0 +1,82 @@
+{
+ "title": "Song title: music video",
+ "format": "music_video",
+ "brief": "An instrumental track, 2:40. A city at night without performers. Feeling: alone but free. Every shot appears once.",
+ "promise": {
+  "text": "Every clip appears once. No people, no text, no signs. One motion and one camera move per shot. Night to dawn.",
+  "signed": ""
+ },
+ "characters": [],
+ "looks": {},
+ "style": "Cinematic night still, wet streets, sodium gold and teal light, 35 mm, photoreal, 16:9.",
+ "concepts": [
+  {
+   "title": "Night to dawn",
+   "logline": "An empty city lives through one night, and the song ends on the first light.",
+   "hook": "Rain on a dark window.",
+   "image": "Steam rising off a wet road at sunrise.",
+   "fit": "Light, weather and water, no people."
+  },
+  {
+   "title": "Neon river",
+   "logline": "A river carries the camera through the city.",
+   "hook": "A reflection rippling.",
+   "image": "Lights smeared in black water.",
+   "fit": "Water and light."
+  },
+  {
+   "title": "Last train",
+   "logline": "One empty train ride from the last stop to the sea.",
+   "hook": "Doors closing.",
+   "image": "The sea at dawn through the train window.",
+   "fit": "One vehicle, one direction."
+  }
+ ],
+ "chosen": "Night to dawn",
+ "rows": [
+  {
+   "id": "s01",
+   "seconds": 8,
+   "role": "hook",
+   "subject": "rain",
+   "subject_motion": "runs down a dark window",
+   "scene": "a high window over a sleeping city, night, no people",
+   "framing": "close-up",
+   "camera": "slow push-in",
+   "intent": "the night starts quiet"
+  },
+  {
+   "id": "s02",
+   "seconds": 8,
+   "role": "establish",
+   "subject": "a wet empty street",
+   "subject_motion": "glows as the streetlights flicker on one by one",
+   "scene": "a narrow street at night, no people, no traffic",
+   "framing": "wide, low",
+   "camera": "slow push-in",
+   "intent": "the city is ours"
+  },
+  {
+   "id": "s03",
+   "seconds": 4,
+   "role": "drop",
+   "subject": "a single tram",
+   "subject_motion": "glides past in one direction, sparks on the wire",
+   "scene": "a wide avenue at night, no people, no other traffic",
+   "framing": "medium wide",
+   "camera": "slow pan right",
+   "intent": "energy"
+  },
+  {
+   "id": "s04",
+   "seconds": 8,
+   "role": "breath",
+   "subject": "steam",
+   "subject_motion": "rises off the road into the first sunlight",
+   "scene": "the same street at dawn, no people",
+   "framing": "wide",
+   "camera": "slow crane up",
+   "intent": "morning arrives"
+  }
+ ]
+}

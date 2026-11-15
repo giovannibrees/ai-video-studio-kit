@@ -1,0 +1,113 @@
+{
+ "title": "Your brand: film title",
+ "format": "brand_film",
+ "brief": "Who it is for. The one feeling they leave with. The one fact they remember. Length, aspect, narrator.",
+ "promise": {
+  "text": "Write what the film will and will not do, in the client's words. Example: one person, one place, every shot moves, no text in shot, the brand only on the end card.",
+  "signed": ""
+ },
+ "characters": [
+  "Ava"
+ ],
+ "looks": {
+  "Ava": "a woman in her late twenties, light olive skin, short dark curly hair, mustard wool cardigan"
+ },
+ "pronounce": {},
+ "style": "Cinematic film still, 35 mm anamorphic lens, soft motivated light, gentle film grain, shallow depth of field, photoreal, 16:9.",
+ "aspect": "2.39:1",
+ "music": {
+  "style": "warm cinematic piano and soft strings, hopeful, gentle build, 76 bpm",
+  "title": "Score"
+ },
+ "concepts": [
+  {
+   "title": "Concept A",
+   "logline": "A person wants something, something gets in the way, something changes.",
+   "hook": "The first image.",
+   "image": "The one image people remember.",
+   "fit": "Why the video model draws this well."
+  },
+  {
+   "title": "Concept B",
+   "logline": "A different kind of story, not a variant of A.",
+   "hook": "...",
+   "image": "...",
+   "fit": "..."
+  },
+  {
+   "title": "Concept C",
+   "logline": "A third kind.",
+   "hook": "...",
+   "image": "...",
+   "fit": "..."
+  }
+ ],
+ "chosen": "Concept A",
+ "sets": {},
+ "rows": [
+  {
+   "id": "s01",
+   "seconds": 5,
+   "role": "hook",
+   "subject": "one lit window",
+   "subject_motion": "the warm light flickers on",
+   "scene": "a quiet street before dawn, blue light",
+   "framing": "wide from across the street",
+   "camera": "slow push-in",
+   "intent": "someone is up before everyone else",
+   "vo": "Before the town wakes, one window is already lit."
+  },
+  {
+   "id": "s02",
+   "seconds": 5,
+   "role": "setup",
+   "subject": "Ava",
+   "subject_motion": "opens her notebook and smiles",
+   "scene": "a small studio, one desk lamp on, blue window",
+   "framing": "medium close-up, three quarter",
+   "camera": "slow push-in",
+   "intent": "she loves this hour",
+   "vo": "Ava keeps this hour for herself, before the emails and the noise."
+  },
+  {
+   "id": "s03",
+   "seconds": 5,
+   "role": "turn",
+   "subject": "the window",
+   "subject_motion": "fills with the first gold sunlight",
+   "scene": "the same studio, sunrise",
+   "framing": "wide",
+   "camera": "slow pan right",
+   "intent": "the day arrives",
+   "vo": "Then the sun comes up over the roofs, one window at a time."
+  },
+  {
+   "id": "s04",
+   "seconds": 5,
+   "role": "payoff",
+   "subject": "Ava",
+   "subject_motion": "looks up at the light and closes her eyes",
+   "scene": "the studio in gold light",
+   "framing": "close-up",
+   "camera": "slow push-in",
+   "intent": "this is why she gets up early",
+   "vo": "This is the part of the day that is hers."
+  },
+  {
+   "id": "s05",
+   "seconds": 4,
+   "role": "brand",
+   "subject": "the end card",
+   "subject_motion": "holds",
+   "scene": "black",
+   "framing": "full frame",
+   "camera": "locked-off",
+   "intent": "brand",
+   "vo": "Your Brand. Your line.",
+   "card": {
+    "title": "Your Brand",
+    "line": "Your line."
+   }
+  }
+ ]
+}

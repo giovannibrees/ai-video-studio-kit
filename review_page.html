@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio Review</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1c1a;--mute:#6d6a63;--line:#e4e0d7;--ok:#2f8a4c;--okbg:#e6f3ea;--warn:#b26a00;--warnbg:#fbf0de;--bad:#b83a32;--badbg:#f8e4e2;--acc:#c2622d}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--card:#1e1d1b;--ink:#efece6;--mute:#a19d94;--line:#34322e;--okbg:#1d3325;--warnbg:#3a2c14;--badbg:#3b1f1c}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:14px 20px}
+h1{font-size:20px;margin:0 0 8px}h2{font-size:17px;margin:0 0 4px}.mute{color:var(--mute)}
+.steps{display:flex;gap:6px;flex-wrap:wrap}.step{border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:13px;background:var(--card);cursor:pointer;text-decoration:none;color:inherit}
+.step.ok{background:var(--okbg);border-color:transparent;color:var(--ok)}
+main{max-width:1180px;margin:0 auto;padding:20px}section{margin:0 0 34px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+img,video{width:100%;border-radius:8px;display:block;background:#000}
+.badge{display:inline-block;font-size:12px;font-weight:600;border-radius:6px;padding:1px 7px}
+.b-approved,.b-PASS{background:var(--okbg);color:var(--ok)}.b-review,.b-REVIEW{background:var(--warnbg);color:var(--warn)}.b-changes,.b-FAIL{background:var(--badbg);color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{border-top:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{color:var(--mute);font-weight:600}
+.act{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}textarea{flex:1 1 220px;min-height:36px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);padding:6px 8px;font:inherit}
+button{border:0;border-radius:8px;padding:7px 13px;font:inherit;font-weight:600;cursor:pointer}.yes{background:var(--ok);color:#fff}.no{background:var(--badbg);color:var(--bad)}
+.takes{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}.take{border:2px solid transparent;border-radius:10px;padding:6px}.take.sel{border-color:var(--acc)}
+pre{white-space:pre-wrap;font-size:13px;background:var(--bg);padding:10px;border-radius:8px;margin:6px 0}
+.prompt{font-size:12.5px;color:var(--mute);max-height:4.5em;overflow:hidden;cursor:pointer}.prompt.open{max-height:none}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:700px){.two{grid-template-columns:1fr}main{padding:12px}}
+.note{font-size:13px;color:var(--bad)}.empty{color:var(--mute);font-style:italic}
+</style>
+</head>
+<body>
+<header><h1 id="title">Studio review</h1><div class="steps" id="steps"></div></header>
+<main id="main"><p class="mute">Loading...</p></main>
+<script>
+const EMBED = /*STATE*/null;
+const RO = !!(EMBED && EMBED.readonly);
+let S = null;
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const st = (stage, id) => { const a = S.approvals[stage] || {}; return (id ? a[id] : a) || {}; };
+const badge = s => s && s.status ? `<span class="badge b-${s.status}">${s.status === "changes" ? "changes asked" : s.status}${s.by ? " by " + esc(s.by) : ""}</span>` : `<span class="badge b-review">not reviewed</span>`;
+
+async function load() {
+  S = EMBED || await (await fetch("/api/state")).json();
+  render();
+}
+async function send(body) {
+  const r = await fetch("/api/approve", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)});
+  const j = await r.json(); if (!j.ok) alert(j.error); await load();
+}
+function actions(stage, id, extra) {
+  if (RO) return "";
+  const k = `${stage}-${id || ""}`;
+  return `<div class="act"><textarea id="n-${k}" placeholder="What should change? (added to the next prompt)"></textarea>
+    <button class="yes" onclick='approveIt(${JSON.stringify(stage)},${JSON.stringify(id || null)},${JSON.stringify(extra || null)})'>Approve</button>
+    <button class="no" onclick='changes(${JSON.stringify(stage)},${JSON.stringify(id || null)})'>Ask for changes</button></div>`;
+}
+function approveIt(stage, id, extra) {
+  const body = {stage, id, status: "approved", note: document.getElementById(`n-${stage}-${id || ""}`)?.value, ...(extra || {})};
+  if (stage === "clips") { body.take = window.sel?.[id]; if (!body.take) return alert("Click the take you want first."); }
+  send(body);
+}
+function changes(stage, id) {
+  const note = document.getElementById(`n-${stage}-${id || ""}`).value;
+  if (!note.trim()) return alert("Write what should change: it goes into the next prompt.");
+  send({stage, id, status: "changes", note});
+}
+function pickTake(id, name) { window.sel = window.sel || {}; window.sel[id] = name; render(); }
+
+function render() {
+  const b = S.beats, rows = S.rows;
+  document.getElementById("title").innerHTML = `${esc(S.title)} <span class="mute" style="font-size:14px;font-weight:400">${S.brand ? esc(S.brand) + " · " : ""}${S.user ? "reviewer: " + esc(S.user) : ""}${S.demo ? " · demo mode" : ""}${S.spent ? " · spent " + S.spent + " credits ($" + (S.spent / 200).toFixed(2) + ")" : ""}</span>`;
+  document.getElementById("steps").innerHTML = S.steps.map(s => `<a class="step ${s.ok ? "ok" : ""}" href="#${s.name.replace(" ", "-")}">${s.ok ? "✓ " : ""}${esc(s.name)}: ${esc(s.text)}</a>`).join("");
+  let h = "";
+  // script
+  const c = (b.concepts || []).map(x => `<div class="card"><b>${esc(x.title)}</b>${x.title === b.chosen ? ' <span class="badge b-approved">chosen</span>' : ""}<br>${esc(x.logline)}<br><span class="mute">Hook: ${esc(x.hook)} · Image: ${esc(x.image)}</span></div>`).join("");
+  h += `<section id="script"><h2>1. Script ${badge(st("script"))}</h2>
+    <div class="card"><b>Brief</b><br>${esc(b.brief)}<br><br><b>Promise</b> ${b.promise?.signed ? `<span class="badge b-approved">signed: ${esc(b.promise.signed)}</span>` : '<span class="badge b-changes">not signed</span>'}<br>${esc(b.promise?.text)}</div>
+    ${c}
+    <div class="card" style="overflow-x:auto"><table><tr><th>#</th><th>s</th><th>role</th><th>shot</th><th>camera</th><th>narration</th></tr>
+    ${b.rows.map(r => `<tr><td>${esc(r.id)}</td><td>${r.seconds}</td><td>${esc(r.role)}</td><td><b>${esc(r.subject)}</b> ${esc(r.subject_motion || "")}<br><span class="mute">${esc(r.scene || "")} · ${esc(r.framing || "")}</span>${r.card ? `<br><i>end card: ${esc(r.card.title)} / ${esc(r.card.line)}</i>` : ""}</td><td>${esc(r.camera || "")}</td><td>${esc(r.vo || "")}</td></tr>`).join("")}</table></div>
+    ${S.script_check ? `<div class="card"><b>Script check</b><pre>${esc(S.script_check)}</pre></div>` : ""}
+    ${st("script").note ? `<p class="note">Changes asked: ${esc(st("script").note)}</p>` : ""}
+    ${actions("script")}</section>`;
+  // blocking
+  if (rows.some(r => r.blocking)) {
+    const bc = S.blocking_check;
+    h += `<section id="blocking"><h2>2. Blocking: who stands and walks where ${badge(st("blocking"))}</h2>
+      <p class="mute">Top view per shot: the camera and what it sees (yellow), each person, the path they walk (dots). Check that nobody walks through furniture and everyone who should be seen is inside the view.</p>
+      ${bc ? (() => { const iss = Object.entries(bc).flatMap(([row, l]) => l.map(([lvl, msg]) => ({row, lvl, msg})));
+        return `<div class="card">${iss.length ? iss.map(i => `<div><span class="badge b-${i.lvl === "FAIL" ? "FAIL" : "REVIEW"}">${esc(i.lvl)}</span> ${esc(i.row)}: ${esc(i.msg)}</div>`).join("") : '<span class="badge b-PASS">blocking check: no problems found</span>'}</div>`; })() : ""}
+      <div class="grid">${rows.filter(r => r.blocking).map(r => `<div class="card"><b>${esc(r.row.id)}</b> <span class="mute">${esc(r.row.subject)} ${esc(r.row.subject_motion)}</span><img src="${r.blocking}" loading="lazy"></div>`).join("")}</div>
+      ${st("blocking").note ? `<p class="note">Changes asked: ${esc(st("blocking").note)}</p>` : ""}
+      ${actions("blocking")}</section>`;
+  }
+  // frames
+  h += `<section id="frames"><h2>3. Start frames</h2><p class="mute">One still per shot. Check faces, hands, props and counts, light, and no text or logos. Approve each one, or say what to change.</p><div class="grid">`;
+  for (const r of rows.filter(r => !r.row.card)) {
+    const s = st("frames", r.row.id);
+    h += `<div class="card"><b>${esc(r.row.id)}</b> ${badge(s)} <span class="mute">${r.frame?.versions ? "version " + (r.frame.versions + 1) : ""}</span>
+      ${r.frame ? `<img src="${r.frame.src}" loading="lazy">${r.blocking ? `<details><summary class="mute">blocking for this shot</summary><img src="${r.blocking}" loading="lazy"></details>` : ""}
+      <details><summary class="mute">prompt sent to the model</summary><div class="prompt open">${esc(r.frame.prompt)}</div></details>${s.note ? `<p class="note">${s.status === "changes" ? "Changes asked" : "Note"}: ${esc(s.note)}</p>` : ""}${s.status !== "approved" ? actions("frames", r.row.id) : ""}` : `<p class="empty">not generated yet</p>`}</div>`;
+  }
+  h += `</div></section>`;
+  // clips
+  h += `<section id="clips"><h2>4. Video takes</h2><p class="mute">Several draft takes per shot, each one checked by the clip check (PASS, REVIEW or FAIL, with the flagged times). Watch every take at full speed, click the best one, approve it. The checklist: docs/REVIEW_CHECKLIST.md.</p>`;
+  const withTakes = rows.filter(r => !r.row.card && r.takes.length);
+  const order = [...withTakes.filter(r => st("clips", r.row.id).status !== "approved"), ...withTakes.filter(r => st("clips", r.row.id).status === "approved")];
+  for (const r of order) {
+    const s = st("clips", r.row.id), cur = (window.sel || {})[r.row.id] || s.take;
+    if (s.status === "approved") r.takes = r.takes.filter(t => t.name === s.take);
+    h += `<div class="card"><b>${esc(r.row.id)}</b> ${badge(s)} <span class="mute">${esc(r.row.subject)} ${esc(r.row.subject_motion)} · ${esc(r.row.camera)}</span>${s.take ? ` <span class="badge b-approved">${esc(s.take)}</span>` : ""}
+      <div class="takes">${r.takes.map(t => `<div class="take ${cur === t.name ? "sel" : ""}" onclick='pickTake(${JSON.stringify(r.row.id)},${JSON.stringify(t.name)})'>
+        <video src="${t.src}" controls muted loop preload="metadata"></video>
+        <div><b>${esc(t.name)}</b> <span class="badge b-${t.qa}">${esc(t.qa)}</span> <span class="mute">clean ${t.clean ? t.clean.join("-") + " s" : "none"}</span></div>
+        ${t.flags.length ? `<div class="mute" style="font-size:12px">${t.flags.map(esc).join(", ")}</div>` : ""}
+        ${t.strip ? `<details><summary class="mute">frame strip</summary><img src="${t.strip}" loading="lazy"></details>` : ""}</div>`).join("")}</div>
+      ${s.note ? `<p class="note">${s.status === "changes" ? "Changes asked" : "Note"}: ${esc(s.note)}</p>` : ""}${s.status !== "approved" ? actions("clips", r.row.id) : ""}</div>`;
+  }
+  if (!rows.some(r => r.takes.length)) h += `<p class="empty">no takes yet</p>`;
+  h += `</section>`;
+  // voice
+  const v = st("voice");
+  h += `<section id="voice"><h2>5. Narrator ${badge(v)}${v.name ? ` <span class="badge b-approved">${esc(v.name)}</span>` : ""}</h2><p class="mute">Pick by ear. A label like "American" or "British" is not proof.</p><div class="grid">
+    ${S.voices.length ? S.voices.map(x => `<div class="card"><b>${esc(x.name)}</b><audio src="${x.file}" controls style="width:100%"></audio>${RO ? "" : `<div class="act"><button class="yes" onclick='send({stage:"voice",status:"approved",voice_id:${JSON.stringify(x.voice_id)},name:${JSON.stringify(x.name)}})'>Use this voice</button></div>`}</div>`).join("") : `<p class="empty">no samples yet: python3 studio.py voices &lt;project&gt;</p>`}</div>
+    ${S.music.length ? `<h2 style="margin-top:16px">Score ${st("music").file ? `<span class="badge b-approved">${esc(st("music").file)}</span>` : ""}</h2><div class="grid">${S.music.map(m => `<div class="card"><b>${esc(m)}</b><audio src="${m}" controls style="width:100%"></audio>${RO ? "" : `<div class="act"><button class="yes" onclick='send({stage:"music",status:"approved",file:${JSON.stringify(m)}})'>Use this score</button></div>`}</div>`).join("")}</div>` : ""}</section>`;
+  // cut
+  h += `<section id="draft-film"><h2>6. Draft film ${S.draft ? badge(st("cut")) : ""}</h2><p class="mute">The whole film from the chosen draft takes, with narration and score. Finals are only paid for after this is approved.</p>
+    ${S.draft ? `<div class="card"><video src="${S.draft}" controls preload="metadata"></video>${st("cut").note ? `<p class="note">${esc(st("cut").note)}</p>` : ""}${st("cut").status !== "approved" ? actions("cut") : ""}</div>` : `<p class="empty">not cut yet</p>`}</section>`;
+  h += `<section id="final"><h2>7. Final</h2>${S.final ? `<div class="card"><video src="${S.final}" controls preload="metadata"></video></div>` : `<p class="empty">not rendered yet</p>`}</section>`;
+  document.getElementById("main").innerHTML = h;
+}
+load();
+</script>
+</body>
+</html>
