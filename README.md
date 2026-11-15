@@ -15,16 +15,41 @@ the next prompt.
 
 ---
 
+## Real examples
+
+These frames and clips were made with this workflow for a music video, and each one passed review before it went into
+the cut.
+
+### Start frames
+
+| | | |
+|---|---|---|
+| ![Golden hour tassels](docs/examples/frame_C75.jpg) | ![Smoke through bare bulbs](docs/examples/frame_C78.jpg) | ![Squid grill under a single bulb](docs/examples/frame_C85.jpg) |
+| **Golden hour, close on colorful tassels and pompoms hanging.** Start frame, reviewer PASS. Video motion: the tassels swing as the tuk-tuk rolls gently, the flare pulses; camera fixed to the tuk-tuk. Remade without people or signs. | **Night, smoke rising through a string of bare light bulbs.** Start frame, reviewer PASS. Video motion: smoke rises up through the bulbs; static camera. Remade without people or signs. | **Night, grilled squid and skewers on a hot grill under a single bulb.** Start frame, reviewer PASS. Video motion: smoke rises in curls under the bulb, the grill glows; static camera. Background signs blank. |
+
+### Video clips
+
+| | | |
+|---|---|---|
+| [![Tassels clip](docs/examples/clip_C75.gif)](docs/examples/clip_C75.mp4) | [![Neon puddle clip](docs/examples/clip_C88.gif)](docs/examples/clip_C88.mp4) | [![One-way avenue clip](docs/examples/clip_C01.gif)](docs/examples/clip_C01.mp4) |
+| **Golden hour tassels.** The tassels swing as the tuk-tuk rolls, the flare pulses; camera fixed to the tuk-tuk. Veo 720p, reviewer PASS. | **Night, camera pointing down at a puddle reflecting pink and blue neon.** Rain drops hit the puddle, rings spreading and colors rippling; static close camera. Remade without people or signs, reviewer PASS. | **Tuk-tuk point of view, one-way avenue (re-roll).** Re-rolled after review so all traffic moves one way, then trimmed to 2.5 s before the street starts to change. Veo 720p, reviewer PASS. |
+
+Click a clip to open the full-quality MP4. Each one started as an approved start frame, went through several takes,
+the clip check and a human review, exactly as described below.
+
+---
+
 ## Contents
-1. [How it works](#how-it-works)
-2. [Install](#install)
-3. [Your first project](#your-first-project)
-4. [Step by step](#step-by-step)
-5. [What it costs](#what-it-costs)
-6. [The script format](#the-script-format)
-7. [The extra tools](#the-extra-tools)
-8. [Folder layout](#folder-layout)
-9. [Troubleshooting](#troubleshooting)
+1. [Real examples](#real-examples)
+2. [How it works](#how-it-works)
+3. [Install](#install)
+4. [Your first project](#your-first-project)
+5. [Step by step](#step-by-step)
+6. [What it costs](#what-it-costs)
+7. [The script format](#the-script-format)
+8. [The extra tools](#the-extra-tools)
+9. [Folder layout](#folder-layout)
+10. [Troubleshooting](#troubleshooting)
 
 ---
 
