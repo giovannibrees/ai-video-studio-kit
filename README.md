@@ -26,6 +26,8 @@ the cut.
 |---|---|---|
 | ![Golden hour tassels](docs/examples/frame_C75.jpg) | ![Smoke through bare bulbs](docs/examples/frame_C78.jpg) | ![Squid grill under a single bulb](docs/examples/frame_C85.jpg) |
 | **Golden hour, close on colorful tassels and pompoms hanging.** Start frame, reviewer PASS. Video motion: the tassels swing as the tuk-tuk rolls gently, the flare pulses; camera fixed to the tuk-tuk. Remade without people or signs. | **Night, smoke rising through a string of bare light bulbs.** Start frame, reviewer PASS. Video motion: smoke rises up through the bulbs; static camera. Remade without people or signs. | **Night, grilled squid and skewers on a hot grill under a single bulb.** Start frame, reviewer PASS. Video motion: smoke rises in curls under the bulb, the grill glows; static camera. Background signs blank. |
+| ![Canal-side walkway](docs/examples/frame_C45.jpg) | ![Long-tail boat propeller](docs/examples/frame_C46.jpg) | ![Banyan tree with ribbons](docs/examples/frame_C48.jpg) |
+| **Day, a narrow canal-side walkway lined with potted plants.** Start frame, reviewer PASS. Video motion: hyperlapse forward along the walkway, plants and house fronts streaming past on both sides; the walkway stays continuous. No people or signs. | **Day, extreme close-up of a long-tail boat propeller churning.** Start frame, reviewer PASS. Video motion: the propeller spins and throws sparkling spray; the camera holds steady beside it. Remade without people or signs. | **Day, an old banyan tree wrapped with colorful ribbons.** Start frame, reviewer PASS. Video motion: the ribbons flutter in the wind, leaves sway; static camera. No people or text. |
 
 ### Video clips
 
@@ -33,6 +35,8 @@ the cut.
 |---|---|---|
 | [![Tassels clip](docs/examples/clip_C75.gif)](docs/examples/clip_C75.mp4) | [![Neon puddle clip](docs/examples/clip_C88.gif)](docs/examples/clip_C88.mp4) | [![One-way avenue clip](docs/examples/clip_C01.gif)](docs/examples/clip_C01.mp4) |
 | **Golden hour tassels.** The tassels swing as the tuk-tuk rolls, the flare pulses; camera fixed to the tuk-tuk. Veo 720p, reviewer PASS. | **Night, camera pointing down at a puddle reflecting pink and blue neon.** Rain drops hit the puddle, rings spreading and colors rippling; static close camera. Remade without people or signs, reviewer PASS. | **Tuk-tuk point of view, one-way avenue (re-roll).** Re-rolled after review so all traffic moves one way, then trimmed to 2.5 s before the street starts to change. Veo 720p, reviewer PASS. |
+| [![Clouds over towers clip](docs/examples/clip_C13.gif)](docs/examples/clip_C13.mp4) | [![Tuk-tuk row clip](docs/examples/clip_C22.gif)](docs/examples/clip_C22.mp4) | [![Park lake drone clip](docs/examples/clip_C23.gif)](docs/examples/clip_C23.mp4) |
+| **Clouds racing over the towers.** A clean time-lapse. Veo 720p, reviewer PASS. | **A row of tuk-tuks in neon, one pulls out.** The first 1.0 s was trimmed because a second tuk-tuk merged into it. Veo 720p, reviewer PASS (marginal). | **Drone over a park lake with towers behind.** A clean slow push. Veo 720p, reviewer PASS. |
 
 Click a clip to open the full-quality MP4. Each one started as an approved start frame, went through several takes,
 the clip check and a human review, exactly as described below.
