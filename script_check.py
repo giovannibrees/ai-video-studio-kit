@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Script checker for beats.json (see SCRIPTS.md). Exit 1 when the script would break in production or in review.
 
 Usage:

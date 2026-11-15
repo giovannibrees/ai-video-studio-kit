@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """The cut: approved takes in row order, trimmed to the row length, narration on each row, the score ducked under the
 voice, an end card, letterbox, and the look grade once over the whole timeline.
 

@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """kie.ai client (images, video takes, music) with a free demo mode.
 
 Keys come from .env (written by `python3 studio.py setup`), never from code or chat.

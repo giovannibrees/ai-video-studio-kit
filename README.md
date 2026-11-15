@@ -10,8 +10,8 @@ renders several video takes per shot, checks every take for typical AI defects, 
 cuts the film. Between every step you approve or send back each item on a review page, and your note goes straight into
 the next prompt.
 
-> **Private software.** You may install and use this kit to make your own videos while you have access to this
-> repository. Copying, sharing, publishing or reselling it is not allowed. See [LICENSE](LICENSE).
+> **Private software, owned by Giovanni Brees.** You may install and use this kit to make your own videos while you
+> have access to this repository. Copying, sharing, publishing or reselling it is not allowed. See [LICENSE](LICENSE).
 
 ---
 
@@ -467,3 +467,14 @@ failing check or set up the blocking, while the approvals stay with you.
 | ffmpeg not found | macOS: `brew install ffmpeg`. Linux: `sudo apt-get install ffmpeg` |
 
 Questions or access requests: open an issue in this repository.
+
+---
+
+## License and ownership
+
+AI Video Studio Kit is owned by Giovanni Brees. Copyright (c) 2026 Giovanni Brees. All rights reserved.
+
+This is proprietary software, not open source. People invited to this repository may install and use it to make their
+own videos for as long as they have access. Copying, sharing, publishing, forking into public repositories, reselling,
+or building other products from it requires written permission from Giovanni Brees. The videos you make with it are
+yours. The full terms are in [LICENSE](LICENSE).

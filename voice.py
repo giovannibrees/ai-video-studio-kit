@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Narration with ElevenLabs: voice samples first (the client picks by ear), then one file per script line.
 
 Why line by line: each line lands on its own shot in the cut without alignment hacks, and a bad line is redone alone.

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Cost ledger, decision log, retry caps and sample-before-batch, per project folder.
 
 Why: spend reconstructed afterwards from balance readings is always wrong, retakes that are not planned blow the budget,

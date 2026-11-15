@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Clip QA: finds the AI-video defects the client caught by eye, before the client sees the clip.
 
 What it measures, per generated clip (12 fps, 320 px analysis copy):

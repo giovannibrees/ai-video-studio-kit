@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Look sheet: one visual identity per project, used by every frame prompt, checked on every frame, applied once as a grade.
 
 Why: films lose their look when style references come from elsewhere or when stock footage is mixed in. One look

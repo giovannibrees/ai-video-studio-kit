@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Variety pass on a cut list: no two neighbours that read as the same shot, a palette change at least every 4 cuts,
 alternating motion, and hero shots on the drops.
 

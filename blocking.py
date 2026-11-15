@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Blocking drawings: a top-view plan per shot showing the set, the camera and its field of view, where every person
 stands and the path they walk. Drawn before any image is generated, approved with the script.
 

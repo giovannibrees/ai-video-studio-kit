@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Review page: one local web page per project where a person approves or sends back every step.
 
   python3 studio.py review <project>               serve it at http://localhost:8765 (approve buttons work)

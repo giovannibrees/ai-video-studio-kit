@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 # AI Video Studio installer: system tools, Python packages, then your name and keys.
 set -euo pipefail
 cd "$(dirname "$0")"

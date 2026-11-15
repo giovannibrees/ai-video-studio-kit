@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """AI Video Studio: one command line for the whole film, from script to final cut, with a person approving every step.
 
   python3 studio.py setup                       ask for your name and API keys, write .env, test the keys

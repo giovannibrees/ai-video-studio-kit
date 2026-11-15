@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Plan arithmetic before any credit is spent: cuts needed vs. unique clips vs. retakes vs. credits vs. balance.
 
 Why: a plan that needs 150 cuts from 55 clips only works by showing every clip three times. Checking the promise

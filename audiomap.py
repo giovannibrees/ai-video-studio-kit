@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Song map: beats, bars, energy, sections, drops and a cut-density plan, measured from the audio (an agent cannot hear).
 
 Why: a cut that uses one fixed pattern per section (every 2 bars, every bar, every half bar) chosen by reading a bar

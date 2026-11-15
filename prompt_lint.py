@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Giovanni Brees. All rights reserved. Proprietary software: see LICENSE. Do not copy or redistribute.
 """Prompt checker: blocks a generation before it spends credits when the prompt asks the model for what it does badly.
 
 Built from real failures: 50 of 53 start frames once failed review in one round because the prompt template itself
