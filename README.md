@@ -3,7 +3,7 @@
 Make short AI films (brand films, UGC ads, music videos) from a script to a finished cut, with a person approving every
 step before any money is spent on the next one.
 
-![The review page, step by step](docs/img/review_tour.gif)
+![Blocking plans on the review page](docs/img/review_blocking.jpg)
 
 You write the script, the kit checks it, draws a top-view plan of who stands and walks where, makes the start frames,
 renders several video takes per shot, checks every take for typical AI defects, records the narration and the score, and
@@ -18,7 +18,7 @@ the next prompt.
 ## Contents
 1. [How it works](#how-it-works)
 2. [Install](#install)
-3. [Try it free in 5 minutes (demo mode)](#try-it-free-in-5-minutes-demo-mode)
+3. [Your first project](#your-first-project)
 4. [Step by step](#step-by-step)
 5. [What it costs](#what-it-costs)
 6. [The script format](#the-script-format)
@@ -98,34 +98,25 @@ Your keys stay in `.env` on your own computer. That file is in `.gitignore` and 
 
 ---
 
-## Try it free in 5 minutes (demo mode)
+## Your first project
 
-Add `--demo` to any command and nothing is sent anywhere or paid: frames become storyboard cards, takes become slow
-camera moves over the card, narration becomes timed silence, music becomes a soft placeholder pad. Use it to learn the
-flow and to test a script end to end.
+The repo includes a complete example script: *The First Pour*, a 41-second brand film for Cafe Lucetti, with
+characters, a floor plan of the café and blocking for every shot. Start from it to see how a finished script looks:
 
 ```bash
 source .venv/bin/activate
 ```
 
 ```bash
-python3 studio.py new demo --from examples/first-pour
+python3 studio.py new first-pour --from examples/first-pour
 ```
 
 ```bash
-python3 studio.py review demo
+python3 studio.py review first-pour
 ```
 
-Open http://localhost:8765, approve the script and the blocking, then in a second terminal:
-
-```bash
-python3 studio.py frames demo --demo
-```
-
-The example is a 41-second brand film for Cafe Lucetti, *The First Pour*. Here is its storyboard
-in demo mode (each card shows the shot and its blocking plan):
-
-![Demo storyboard](docs/img/storyboard_sheet.jpg)
+Open http://localhost:8765 to read the script and the blocking. Checking a script and drawing the blocking are free;
+credits are only spent from the frames step on, and every paid command shows its cost first.
 
 ---
 
@@ -224,8 +215,6 @@ approve it:
 Approve each frame, or write what should change. The note is added to the next prompt for that frame, the old version
 is kept in `frames/old/`, and the page shows the version number:
 
-![Frames on the review page](docs/img/review_frames.jpg)
-
 The first approved frame of each character is passed as a reference to every later frame with that character, so faces
 and clothes stay the same across shots.
 
@@ -240,17 +229,12 @@ measures motion frame by frame and flags pop-ins, morphing, opposite motion stre
 
 ![Takes command](docs/img/term_takes.png)
 
-Each flagged take gets a frame strip with the bad moments in red. In this take a dark shape pops into the frame at 2.4 s
-and vanishes again:
-
-![Clip check frame strip](docs/img/clip_qa_fail.jpg)
+Each flagged take gets a frame strip with the bad moments marked in red, so you know exactly where to look.
 
 On the review page you watch every take at full speed, click the best one and approve it. Pending shots sit at the
 top; approved shots collapse to the chosen take. The checklist for reviewers is
 [docs/REVIEW_CHECKLIST.md](docs/REVIEW_CHECKLIST.md): the clip check catches about two thirds of the defects people
 reject, so a human look is still part of the job.
-
-![Takes on the review page](docs/img/review_clips.jpg)
 
 ### 5. Narrator and score
 
@@ -284,8 +268,6 @@ python3 studio.py cut my-ad
 The draft film puts the chosen takes in order, trims each to its row length (starting at the clean range the clip check
 found), lays each narration line on its shot, ducks the score under the voice, adds the end card and the letterbox, and
 applies the look grade once over the whole film.
-
-![Draft film on the review page](docs/img/review_draft-film.jpg)
 
 Only after you approve the draft film:
 
@@ -427,7 +409,7 @@ ai-video-studio-kit/
 ├── studio.py             the command line: setup, new, check, blocking, review, frames, takes, voices, vo, music, cut, final, status
 ├── review_server.py      the review page (review_page.html) and the static export
 ├── cut.py                the edit: takes, narration, ducked score, end card, letterbox, grade
-├── kie.py  voice.py      the kie.ai and ElevenLabs clients, with the free demo mode
+├── kie.py  voice.py      the kie.ai and ElevenLabs clients
 ├── *.py                  the checks and tools listed above
 ├── templates/            beats_brand_film.json, beats_ugc_ad.json, beats_music_video.json, plan.json
 ├── examples/first-pour/  the example film script with blocking

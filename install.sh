@@ -26,12 +26,11 @@ echo "packages installed in .venv"
 say "3/4 Your name and API keys"
 python3 studio.py setup
 
-say "4/4 Free test run (demo mode, no credits)"
-python3 studio.py new hello --from examples/first-pour >/dev/null 2>&1 || true
-python3 studio.py check hello | tail -1
-python3 studio.py blocking hello | tail -1
+say "4/4 Check the example script (free, no credits)"
+python3 studio.py new first-pour --from examples/first-pour >/dev/null 2>&1 || true
+python3 studio.py check first-pour | tail -1
+python3 studio.py blocking first-pour | tail -1
 echo
 echo "Done. Next:"
 echo "  source .venv/bin/activate"
-echo "  python3 studio.py review hello      # open http://localhost:8765 and approve the script"
-echo "  python3 studio.py frames hello --demo"
+echo "  python3 studio.py review first-pour      # open http://localhost:8765 and read the script and blocking"

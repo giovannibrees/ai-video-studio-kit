@@ -61,7 +61,7 @@ def state(p):
         "music": [rel(x) for x in sorted((p / "music").glob("score_*.mp3"))] if (p / "music").exists() else [],
         "draft": rel(p / "cut" / "draft.mp4") if (p / "cut" / "draft.mp4").exists() else None,
         "final": rel(p / "cut" / "final.mp4") if (p / "cut" / "final.mp4").exists() else None,
-        "spent": spent, "demo": os.environ.get("STUDIO_DEMO") == "1" or not os.environ.get("KIE_API_KEY"),
+        "spent": spent,
     }
 
 

@@ -70,7 +70,7 @@ function pickTake(id, name) { window.sel = window.sel || {}; window.sel[id] = na
 
 function render() {
   const b = S.beats, rows = S.rows;
-  document.getElementById("title").innerHTML = `${esc(S.title)} <span class="mute" style="font-size:14px;font-weight:400">${S.brand ? esc(S.brand) + " · " : ""}${S.user ? "reviewer: " + esc(S.user) : ""}${S.demo ? " · demo mode" : ""}${S.spent ? " · spent " + S.spent + " credits ($" + (S.spent / 200).toFixed(2) + ")" : ""}</span>`;
+  document.getElementById("title").innerHTML = `${esc(S.title)} <span class="mute" style="font-size:14px;font-weight:400">${S.brand ? esc(S.brand) + " · " : ""}${S.user ? "reviewer: " + esc(S.user) : ""}${S.spent ? " · spent " + S.spent + " credits ($" + (S.spent / 200).toFixed(2) + ")" : ""}</span>`;
   document.getElementById("steps").innerHTML = S.steps.map(s => `<a class="step ${s.ok ? "ok" : ""}" href="#${s.name.replace(" ", "-")}">${s.ok ? "✓ " : ""}${esc(s.name)}: ${esc(s.text)}</a>`).join("");
   let h = "";
   // script

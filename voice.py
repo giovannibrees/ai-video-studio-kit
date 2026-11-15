@@ -3,7 +3,6 @@
 
 Why line by line: each line lands on its own shot in the cut without alignment hacks, and a bad line is redone alone.
 previous_text / next_text keep the flow natural across lines.
-Demo mode (no ELEVENLABS_API_KEY or STUDIO_DEMO=1): silent placeholders with the right length (about 2.3 words/s).
 """
 import json
 import os
@@ -20,16 +19,10 @@ SUGGESTED = {"Christopher (British, gentle)": "G17SuINrv2H9FC6nvetn", "Benedict 
 SETTINGS = {"stability": 0.5, "similarity_boost": 0.78, "style": 0.15, "use_speaker_boost": True, "speed": 0.95}
 
 
-def demo():
-    return os.environ.get("STUDIO_DEMO") == "1" or not os.environ.get("ELEVENLABS_API_KEY")
-
-
 def tts(text, voice_id, out, prev="", nxt=""):
     out = Path(out); out.parent.mkdir(parents=True, exist_ok=True)
-    if demo():
-        secs = max(1.0, len(text.split()) / 2.3)
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", f"anullsrc=r=44100:cl=mono", "-t", f"{secs:.2f}", "-q:a", "6", str(out)], check=True)
-        return out
+    if not os.environ.get("ELEVENLABS_API_KEY"):
+        raise RuntimeError("ELEVENLABS_API_KEY missing: run `python3 studio.py setup` and add it")
     body = {"text": text, "model_id": "eleven_multilingual_v2", "previous_text": prev, "next_text": nxt, "voice_settings": SETTINGS}
     req = urllib.request.Request(f"{API}/text-to-speech/{voice_id}?output_format=mp3_44100_128", data=json.dumps(body).encode(),
                                  headers={"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"})

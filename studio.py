@@ -15,7 +15,6 @@
   python3 studio.py cut <project>               the draft film from the approved takes, narration and score
   python3 studio.py final <project>             the approved takes again at 720p (needs the approved draft film), then the final cut
   python3 studio.py status <project>            where the project stands and what waits on whom
-Add --demo (or STUDIO_DEMO=1) to any command to run it for free with placeholder media.
 Every paid step checks the cost against your balance first, generates one sample before a batch, and stops an item
 after three rounds.
 """
@@ -31,9 +30,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
-if "--demo" in sys.argv:
-    os.environ["STUDIO_DEMO"] = "1"
-    sys.argv.remove("--demo")
 
 import kie  # noqa: E402  (loads .env)
 import ledger  # noqa: E402
@@ -146,7 +142,6 @@ def cmd_setup(a):
         if v:
             os.environ[k] = v
     print(f"\nSaved {env} (readable only by you).")
-    os.environ.pop("STUDIO_DEMO", None)
     b = kie.balance()
     print(f"  kie.ai: {'OK, balance ' + money(b) if b is not None else 'could not read the balance: check the key'}")
     if vals["ELEVENLABS_API_KEY"]:
@@ -262,9 +257,9 @@ def cmd_frames(a):
         print(f"{len(todo)} frames to make. Making ONE sample first; approve it on the review page and run frames again.")
         todo = todo[:1]
     est = len(todo) * kie.IMAGE_CREDITS
-    print(f"frames: {len(todo)} x {kie.IMAGE_CREDITS} = {money(est)}{'  (demo: free)' if kie.demo() else ''}")
+    print(f"frames: {len(todo)} x {kie.IMAGE_CREDITS} = {money(est)}")
     try:
-        b0 = ledger.gate(p, "frames", len(todo), 0 if kie.demo() else est, items=[r["id"] for r, _ in todo])
+        b0 = ledger.gate(p, "frames", len(todo), est, items=[r["id"] for r, _ in todo])
     except ledger.LedgerError as e:
         sys.exit(f"STOPPED: {e}")
     for r, note in todo:
@@ -284,15 +279,13 @@ def cmd_frames(a):
         if out.exists():
             v = len(list((p / "frames" / "old").glob(f"{r['id']}_v*.png"))) + 1
             (p / "frames" / "old").mkdir(parents=True, exist_ok=True); out.rename(p / "frames" / "old" / f"{r['id']}_v{v}.png")
-        model = kie.image(prompt, urls, out, label=r["id"], caption=f"{cap(r['subject'])}: {r['subject_motion']}\n{cap(r['scene'])}\n{cap(r['framing'])}, {r['camera']}",
-                          inset=p / "blocking" / f"{r['id']}.png")
+        model = kie.image(prompt, urls, out, label=r["id"])
         (p / "frames" / f"{r['id']}.json").write_text(json.dumps({"prompt": prompt, "model": model, "refs": [str(x) for x in refs],
                                                                    "t": time.strftime("%Y-%m-%d %H:%M")}, indent=1))
         ap.setdefault("frames", {})[r["id"]] = {"status": "review"}
         print(f"  {r['id']}: {'done' if model else 'FAILED'}")
     save_approvals(p, ap)
-    if not kie.demo():
-        ledger.spend(p, "frames", b0, kie.balance(), model="nano-banana-pro", items=len(todo))
+    ledger.spend(p, "frames", b0, kie.balance(), model="nano-banana-pro", items=len(todo))
     print("Next: approve or send back each frame on the review page.")
 
 
@@ -312,9 +305,9 @@ def cmd_takes(a):
         rows = rows[:1]
     secs = sum(min(12, max(4, round(r["seconds"] + 1))) for r in rows)
     est = secs * a.n * kie.RATE["480p"]
-    print(f"takes: {len(rows)} shots x {a.n} takes, {secs} s each round = {money(est)}{'  (demo: free)' if kie.demo() else ''}")
+    print(f"takes: {len(rows)} shots x {a.n} takes, {secs} s each round = {money(est)}")
     try:
-        b0 = ledger.gate(p, "takes", len(rows), 0 if kie.demo() else est, items=[r["id"] for r in rows])
+        b0 = ledger.gate(p, "takes", len(rows), est, items=[r["id"] for r in rows])
     except ledger.LedgerError as e:
         sys.exit(f"STOPPED: {e}")
     for r in rows:
@@ -341,8 +334,7 @@ def cmd_takes(a):
         (d / "takes.json").write_text(json.dumps(meta, indent=1))
         ap.setdefault("clips", {})[r["id"]] = {"status": "review"}
     save_approvals(p, ap)
-    if not kie.demo():
-        ledger.spend(p, "takes", b0, kie.balance(), model="seedance-2-5", items=len(rows) * a.n)
+    ledger.spend(p, "takes", b0, kie.balance(), model="seedance-2-5", items=len(rows) * a.n)
     print("Next: watch every take at full speed on the review page, pick one per shot (docs/REVIEW_CHECKLIST.md).")
 
 
@@ -410,17 +402,16 @@ def cmd_final(a):
         if not (p / "finals" / f"{r['id']}.mp4").exists():
             jobs.append((r, take, meta, dur)); secs += dur
     est = secs * kie.RATE[a.res]
-    print(f"finals: {len(jobs)} shots, {secs} s at {a.res} = {money(est)}{'  (demo: free)' if kie.demo() else ''}")
+    print(f"finals: {len(jobs)} shots, {secs} s at {a.res} = {money(est)}")
     try:
-        b0 = ledger.gate(p, "finals", min(len(jobs), ledger.SAMPLE_BATCH), 0 if kie.demo() else est, items=[])
+        b0 = ledger.gate(p, "finals", min(len(jobs), ledger.SAMPLE_BATCH), est, items=[])
     except ledger.LedgerError as e:
         sys.exit(f"STOPPED: {e}")
     for r, take, meta, dur in jobs:
         tid = kie.take(p / "frames" / f"{r['id']}.png", meta["prompt"], p / "finals" / f"{r['id']}.mp4", seconds=dur,
                        res=a.res, draft=False, draft_task_id=meta["task_id"])
         print(f"  {r['id']} ({take}): {'done' if tid else 'FAILED'}")
-    if not kie.demo():
-        ledger.spend(p, "finals", b0, kie.balance(), model="seedance-2-5", items=len(jobs))
+    ledger.spend(p, "finals", b0, kie.balance(), model="seedance-2-5", items=len(jobs))
     cmd_cut(a, final=True)
 
 
@@ -448,7 +439,8 @@ def cmd_status(a):
     for name, txt, ok in stage_state(p, b, ap):
         print(f"  {'[x]' if ok else '[ ]'} {name:11s} {txt}")
     spent = sum((e.get("credits") or 0) for e in ledger.entries(p, "spend"))
-    print(f"  spent so far: {money(spent)}" + ("" if kie.demo() else f", balance {money(kie.balance() or 0)}"))
+    bal = kie.balance()
+    print(f"  spent so far: {money(spent)}" + (f", balance {money(bal)}" if bal is not None else ""))
 
 
 def cmd_review(a):

@@ -23,4 +23,3 @@ Read `README.md` for the flow and `docs/SCRIPTS.md` before writing any script.
 - One cup per person, every prop listed once, people counted in every frame.
 - Watch every take at full speed with `docs/REVIEW_CHECKLIST.md`; `clip_qa.py` catches about two thirds of defects.
 - A "changes" note from the review page is added to the next prompt for that item; read it before regenerating.
-- Use `--demo` to test any flow for free.
